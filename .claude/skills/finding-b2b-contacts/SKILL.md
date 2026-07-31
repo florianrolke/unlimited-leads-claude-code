@@ -15,6 +15,20 @@ Build a list of real decision-makers with job titles, companies, LinkedIn URLs, 
 - "Who are the founders at companies with 50-200 staff in fintech?"
 - Anything the user calls System 1, B2B leads, or prospecting
 
+## Check this first: it needs a paid Apify plan
+
+`harvestapi/linkedin-profile-search` allows free Apify accounts **10 runs total**,
+then returns zero results with a SUCCEEDED status. The script detects this and
+explains it, but know it up front.
+
+**If the user is on the free plan**, steer them to `finding-local-businesses`
+(System 2, no cap) or `free-lead-scraping` (System 3, no Apify at all). Don't let
+them burn time tuning filters against a run that never started.
+
+The video's original actor (`scrape_apify.py`) works on free, but Apify requires
+a one-time browser approval of full-account permissions. The error message it
+returns contains the exact URL to do that.
+
 ## Inputs
 
 | Flag | Required | What it does |

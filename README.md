@@ -31,6 +31,9 @@ python -X utf8 scripts/02_local_businesses/scrape_google_maps.py \
 That's a real lead list in two commands. No workflow to import, no credentials to
 wire into six nodes, no canvas to keep open.
 
+Those two work on a **free Apify account**. System 1 (LinkedIn search) needs a
+paid plan — see the note in its walkthrough below.
+
 ---
 
 ## What actually changed since the video
@@ -125,7 +128,7 @@ Mac or Linux: `python3 -m venv .venv && source .venv/bin/activate`, and `cp` ins
 
 | Key | What it's for | Cost | Get it |
 |---|---|---|---|
-| `APIFY_API_TOKEN` | Systems 1 and 2 | free trial credit, then pay-per-use | [console.apify.com](https://console.apify.com) |
+| `APIFY_API_TOKEN` | Systems 1 and 2 | free credit; System 2 works on the free plan, System 1 needs paid | [console.apify.com](https://console.apify.com) |
 | `ANTHROPIC_API_KEY` | research + writing | pay-per-use, cents | [console.anthropic.com](https://console.anthropic.com) |
 | `TAVILY_API_KEY` | research search | **free**, 1,000/month | [tavily.com](https://tavily.com) |
 
@@ -137,6 +140,11 @@ rather than 200 leads into a run.
 ---
 
 ## Walkthrough: System 1
+
+> **Needs a paid Apify plan.** This actor gives free accounts 10 runs total, then
+> quietly returns nothing. On the free plan, do System 2 or System 3 first — both
+> work fully and cost less. The script detects the cap and tells you, rather than
+> letting you tune filters that were never the problem.
 
 ```bash
 # 1. Test 25 and READ THEM. Right kind of person?

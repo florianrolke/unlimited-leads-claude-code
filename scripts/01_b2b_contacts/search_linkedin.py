@@ -22,7 +22,15 @@ recently changed, so your opener isn't generic. This actor has that as a filter:
 
 Filter on those and every lead arrives with a trigger event already attached.
 
-The old actor is still here if you want to follow the video exactly:
+Before you run this: it needs a paid Apify plan
+-----------------------------------------------
+This actor allows free Apify accounts **10 runs total**, then returns nothing.
+If you're on the free plan and just want leads today, use System 2 (Google Maps
+has no such cap) or System 3 (no Apify account at all). Both are cheaper anyway.
+
+The video's original actor is still here, but it has its own first-run step:
+Apify makes you approve full-account permissions for it in the browser once.
+
     python -X utf8 scripts/01_b2b_contacts/scrape_apify.py --help
 
 Usage
@@ -136,6 +144,33 @@ def search_linkedin(
         return []
 
     results = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+
+    # An actor can report SUCCEEDED and still hand back nothing, because a plan
+    # limit stopped it before it did any work. Without this check the caller sees
+    # "0 profiles" and goes off tuning filters that were never the problem.
+    if not results:
+        msg = (run.get("statusMessage") or "").lower()
+        if "run limit" in msg or "upgrade" in msg or "limit reached" in msg:
+            print(
+                "\n" + "=" * 68 + "\n"
+                "This actor caps free Apify accounts at 10 runs, and yours has\n"
+                "reached it. Your filters are fine — the run never started.\n\n"
+                "Three ways forward:\n"
+                "  1. Use System 2 instead. Google Maps has no such cap and works\n"
+                "     on the free plan:\n"
+                "     python -X utf8 scripts/02_local_businesses/scrape_google_maps.py \\\n"
+                '         --search "roofers in Mobile AL" --limit 10 --contacts\n\n'
+                "  2. Use System 3. Free, no Apify account needed at all:\n"
+                '     python -X utf8 scripts/03_free_scraping/build_dorks.py --niche "roofer"\n\n'
+                "  3. Upgrade Apify (from $39/mo) if you want LinkedIn search specifically.\n"
+                + "=" * 68,
+                file=sys.stderr,
+            )
+            return []
+        if msg:
+            print(f"\nThe actor finished but returned nothing. It reported: {run.get('statusMessage')}",
+                  file=sys.stderr)
+
     print(f"Found {len(results)} profiles")
     return results
 

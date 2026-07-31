@@ -5,6 +5,21 @@ behind those estimates.
 
 Apify actor pricing changes. Check the actor page before a large run.
 
+## What works on a free Apify account
+
+Worth knowing before you pick a system — this is per-actor, not per-plan-price.
+
+| System | Free Apify plan | Notes |
+|---|---|---|
+| **System 3** — free scraping | ✅ no Apify account needed at all | Start here |
+| **System 2** — Google Maps | ✅ works | Verified on a free account |
+| **System 1** — LinkedIn search | ❌ 10 runs, then returns nothing | Needs Apify paid (from $39/mo) |
+| **System 1** — the video's actor | ⚠️ works, but Apify makes you approve full-account permissions in the browser once | One-time, then fine |
+
+If you're evaluating this repo, do System 2 and 3 first. They cover local
+businesses and free scraping completely, and together that's most people's use
+case anyway.
+
 ## System 1 — B2B contacts
 
 `harvestapi/linkedin-profile-search`, billed per search page plus per profile.

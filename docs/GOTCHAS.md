@@ -67,6 +67,21 @@ one weird lead can drain a search quota.
 **Checkpoint anything long.** Runs get interrupted. `--resume` picks up where it
 stopped instead of re-paying.
 
+## Apify plan limits
+
+**System 1 returns 0 profiles and says the filters are wrong.** They probably
+aren't. `harvestapi/linkedin-profile-search` caps free accounts at 10 runs, then
+reports SUCCEEDED with an empty dataset and `statusMessage: free user run limit
+reached`. The script checks for this and tells you — but if you write your own
+actor wrapper, check `run["statusMessage"]` when the dataset is empty, or you'll
+debug the wrong thing.
+
+**The video's actor wants full-account permissions.** `code_crafter/leads-finder`
+errors on first run with an approval URL. Open it once, approve, done.
+
+**System 2 has no such cap** and was verified end to end on a free account. So
+was System 3, which needs no Apify account at all.
+
 ## API keys
 
 **Rotate on exhaustion.** Add `TAVILY_API_KEY_2`, `_3` and the research step moves
