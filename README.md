@@ -108,7 +108,7 @@ progress, and it's the most common way people waste their first month.
 ## Setup (Windows, about 10 minutes)
 
 ```powershell
-git clone https://github.com/Florian1995-ai/unlimited-leads-claude-code.git
+git clone https://github.com/florianrolke/unlimited-leads-claude-code.git
 cd unlimited-leads-claude-code
 
 py -3.12 -m venv .venv
@@ -315,7 +315,7 @@ The three systems, the 3 Ps framing, the determinism idea, and the four AI promp
 in `prompts/` are **Jack Roberts'**, from *UNLIMITED leads for FREE (FULL COURSE)*
 in the AI Automations by Jack community. Included with his permission.
 
-This repo is the Python port, maintained by [Florian Rolke](https://github.com/Florian1995-ai).
+This repo is the Python port, maintained by [Florian Rolke](https://github.com/florianrolke).
 
 ## License
 MIT — see [LICENSE](LICENSE).
