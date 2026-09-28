@@ -1,3 +1,5 @@
+> **This repository has moved.** It now lives in the folder [`unlimited-leads-claude-code`](https://github.com/florianrolke/community-resources/tree/main/unlimited-leads-claude-code) of [florianrolke/community-resources](https://github.com/florianrolke/community-resources), together with all of Florian Rolke's community resources. This copy is archived (read-only) and stays online so existing links keep working. New fixes and updates happen in community-resources.
+
 # UNLIMITED Leads — in Claude Code, not n8n
 
 The lead-generation course, rebuilt in Python. Same three systems, same prompts,
